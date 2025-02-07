@@ -1,7 +1,29 @@
 body {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 00;
   display: grid;
   place-items: center;
+}
+
+h1, h2, h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+button { 
+  padding: 0.5rem;
+  width: fit-content;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+.form { 
+  display: flex;
+  flex-direction: column;
+}
+
+.error-msg { 
+  border: 1px solid red;
+  padding: 0.5rem;
 }
