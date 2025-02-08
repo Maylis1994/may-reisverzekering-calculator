@@ -17,6 +17,8 @@ export default function Home() {
       {!loading && !apiResponse && <Form setApiResponse={setApiResponse} setLoading={setLoading} />}
 
       {apiResponse && <Result result={apiResponse} />}
+
+      {apiResponse && <button type="button" onClick={() => setApiResponse(null)}>Reset</button> }
     </div>
   );
 }
