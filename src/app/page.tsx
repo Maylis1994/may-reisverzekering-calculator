@@ -9,16 +9,19 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <div className="layout">
+    <div className="home">
       <h1>Reisverzekering berekenen?</h1>
+      <div className="home__content">
+        {loading && <p className="loading">We zijn aan het rekenen...</p>}
 
-      {loading && <p>Loading...</p>}
+        {!loading && !apiResponse && <Form setApiResponse={setApiResponse} setLoading={setLoading} />}
 
-      {!loading && !apiResponse && <Form setApiResponse={setApiResponse} setLoading={setLoading} />}
+        {apiResponse && <Result result={apiResponse} />}
 
-      {apiResponse && <Result result={apiResponse} />}
+      </div>
 
-      {apiResponse && <button type="button" onClick={() => setApiResponse(null)}>Reset</button> }
+      {apiResponse && <button type="button" onClick={() => setApiResponse(null)}>Nieuwe berekening maken</button>}
+
     </div>
   );
 }

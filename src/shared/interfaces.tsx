@@ -1,8 +1,8 @@
 type ApiResponse = {
   name: string;
-  pricePerDay?: number;
-  pricePerGrownup?: number;
-  pricePerChild?: number;
+  pricePerDayTotal?: number;
+  pricePerGrownupTotal?: number;
+  pricePerChildTotal?: number;
   totalPrice: number;
   recommendedResult: boolean;
 };
