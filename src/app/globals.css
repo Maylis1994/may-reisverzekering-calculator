@@ -27,3 +27,12 @@ button {
   border: 1px solid red;
   padding: 0.5rem;
 }
+
+.result { 
+  display: flex;
+  gap: 1rem;
+  div { 
+    background-color: red;
+    color: white;
+  }
+}

@@ -1,14 +1,5 @@
 'use client'
 
-type ApiResponse = {
-    name: string;
-    pricePerDay?: number;
-    pricePerGrownup?: number;
-    pricePerChild?: number;
-    totalPrice: number;
-    recommendedResult: boolean;
-};
-
 type Result = {
     result: ApiResponse[];
 };
@@ -21,19 +12,21 @@ const Result = ({ result }: Result) => {
     const doorlopendeReisverzekering: ApiResponse = result[1];
     return (
         <>
-            <div>
-                <h2>{tijdelijkeReisverzekering.name}</h2>
-                <p> Kosten per 18+: {tijdelijkeReisverzekering.pricePerGrownup} euro </p>
-                <p> Kosten per kind: {tijdelijkeReisverzekering.pricePerChild} euro</p>
-                <p> Totaal: {tijdelijkeReisverzekering.totalPrice} euro</p>
-                { tijdelijkeReisverzekering.recommendedResult && <p>Onze aanbeveling!</p> }
-            </div>
+            <div className="result">
+                <div >
+                    <h2>{tijdelijkeReisverzekering.name}</h2>
+                    <p> Kosten per 18+: {tijdelijkeReisverzekering.pricePerGrownup} euro </p>
+                    <p> Kosten per kind: {tijdelijkeReisverzekering.pricePerChild} euro</p>
+                    <p> Totaal: {tijdelijkeReisverzekering.totalPrice} euro</p>
+                    {tijdelijkeReisverzekering.recommendedResult && <p>Onze aanbeveling!</p>}
+                </div>
 
-            <div>
-                <h2>{doorlopendeReisverzekering.name}</h2>
-                <p> Totaal: {doorlopendeReisverzekering.totalPrice} euro</p>
+                <div>
+                    <h2>{doorlopendeReisverzekering.name}</h2>
+                    <p> Totaal: {doorlopendeReisverzekering.totalPrice} euro</p>
 
-                { doorlopendeReisverzekering.recommendedResult && <p>Onze aanbeveling!</p> }
+                    {doorlopendeReisverzekering.recommendedResult && <p>Onze aanbeveling!</p>}
+                </div>
             </div>
         </>
     );

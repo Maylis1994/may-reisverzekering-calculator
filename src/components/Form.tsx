@@ -2,9 +2,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Result from "./Result";
-import axios from "Axios"
-import { useState } from "react";
 
 const dataFromFormValidator = z.object({
     dateOfBirth: z.coerce.date(),
@@ -15,22 +12,13 @@ const dataFromFormValidator = z.object({
     houseNumber: z.number().min(0),
 })
 
-type ApiResponse = {
-    name: string;
-    pricePerDay?: number;
-    pricePerGrownup?: number;
-    pricePerChild?: number;
-    totalPrice: number;
-    recommendedResult: boolean;
-};
-
 type DataFromForm = z.infer<typeof dataFromFormValidator>;
 
-const Form = () => {
+const Form = ({ setApiResponse, setLoading }: { setApiResponse: (value: ApiResponse[]) => void, setLoading: (value: boolean) => void }) => {
 
-    const [apiResponse, setApiResponse] = useState<ApiResponse[] | null>(null);
 
     const handleFormSubmit = async (data: any) => {
+        setLoading(true)
         const axios = require("axios");
         const AxiosMockAdapter = require("axios-mock-adapter");
         const mock = new AxiosMockAdapter(axios, { delayResponse: 2000 });
@@ -49,6 +37,7 @@ const Form = () => {
         }] as ApiResponse[];
         mock.onGet("/reisverzekeringresult").reply(200, mockedResponse);
         axios.get("/reisverzekeringresult").then(function (response: any) {
+            setLoading(false)
             setApiResponse(response.data)
         })
     }
@@ -115,13 +104,8 @@ const Form = () => {
 
                 <button type="submit">Bereken!</button>
             </form>
-
-
         </div>
-        {apiResponse != null && <Result result={apiResponse}></Result>}
-        <div />
     </>
 }
-
 
 export default Form
