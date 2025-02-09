@@ -12,12 +12,12 @@ const dataFormValidator = z.object({
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             return inputDate <= today;
-        }, { message: "Datum is in de toekomst. Kies een andere datum" }),
-    travelDays: z.number({ message: "Vul een nummer in" }).min(0, { message: "Nummer moet een positief getal zijn" }),
-    amountOfGrownups: z.number({ message: "Vul een nummer in" }).min(0, { message: "Nummer moet een positief getal zijn" }),
-    amountOfChildren: z.number({ message: "Vul een nummer in" }).min(0, { message: "Nummer moet een positief getal zijn" }),
+        }, { message: "Je geboortedatum kan niet in de toekomst liggen. Pas de datum aan." }),
+    travelDays: z.number({ message: "Vul een getal in" }).min(0, { message: "Getal moet een positief getal zijn" }),
+    amountOfGrownups: z.number({ message: "Vul een getal in" }).min(0, { message: "Getal moet een positief getal zijn" }),
+    amountOfChildren: z.number({ message: "Vul een getal in" }).min(0, { message: "Getal moet een positief getal zijn" }),
     postalCode: z.string({ message: "Vul een correcte postcode in (bijv. 1234XX)" }).regex(/^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/i),
-    houseNumber: z.number({ message: "Vul een nummer in" }).min(0, { message: "Nummer moet een positief getal zijn" }),
+    houseNumber: z.number({ message: "Vul een nummer in" }).min(0, { message: "Getal moet een positief getal zijn" }),
 })
 
 type FormData = z.infer<typeof dataFormValidator>;
@@ -31,7 +31,7 @@ const Form = ({ setApiResponse, setLoading }: { setApiResponse: (value: ApiRespo
         const AxiosMockAdapter = require("axios-mock-adapter");
         const mock = new AxiosMockAdapter(axios, { delayResponse: 2000 });
         const mockedResponse: ApiResponse[] = [{
-            name: "Tijdelijke reisverzekering",
+            name: "Kortlopende reisverzekering reisverzekering",
             pricePerDayTotal: data.travelDays * 10,
             pricePerGrownupTotal: data.amountOfGrownups * 8,
             pricePerChildTotal: data.amountOfChildren * 5,

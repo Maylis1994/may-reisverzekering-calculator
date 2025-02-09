@@ -5,22 +5,22 @@ type Result = {
 };
 
 const Result = ({ result }: Result) => {
-    const tijdelijkeReisverzekering: ApiResponse = result[0];
+    const kortlopendeReisverzekering: ApiResponse = result[0];
     const doorlopendeReisverzekering: ApiResponse = result[1];
     return (
         <>
             <div className="results">
-                <div className={`${tijdelijkeReisverzekering.recommendedResult ? 'recommendedResult result' : 'result'}`}>
+                <div className={`${kortlopendeReisverzekering.recommendedResult ? 'recommendedResult result' : 'result'}`}>
                     <div className="result__text">
-                        <h2>{tijdelijkeReisverzekering.name}</h2>
+                        <h2>{kortlopendeReisverzekering.name}</h2>
                         <div>
-                            <p> Totale kosten per dag: {tijdelijkeReisverzekering.pricePerDayTotal} euro</p>
-                            <p> Totale kosten boven de 18: {tijdelijkeReisverzekering.pricePerGrownupTotal} euro </p>
-                            <p> Totale kosten onder de 18: {tijdelijkeReisverzekering.pricePerChildTotal} euro</p>
+                            <p> Totale kosten per dag: {kortlopendeReisverzekering.pricePerDayTotal} euro</p>
+                            <p> Totale kosten boven de 18: {kortlopendeReisverzekering.pricePerGrownupTotal} euro </p>
+                            <p> Totale kosten onder de 18: {kortlopendeReisverzekering.pricePerChildTotal} euro</p>
                         </div>
-                        <p className="font-bold"> Totaal: {tijdelijkeReisverzekering.totalPrice} euro</p>
+                        <p className="font-bold"> Totaal: {kortlopendeReisverzekering.totalPrice} euro</p>
                     </div>
-                    {tijdelijkeReisverzekering.recommendedResult && <p className="recommendedResultBanner">Onze aanbeveling!</p>}
+                    {kortlopendeReisverzekering.recommendedResult && <p className="recommendedResultBanner">Onze aanbeveling!</p>}
                 </div>
 
                 <div className={`${doorlopendeReisverzekering.recommendedResult ? 'recommendedResultBanner result' : 'result'}`}>
