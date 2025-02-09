@@ -20,9 +20,7 @@ const Result = ({ result }: Result) => {
                         </div>
                         <p className="font-bold"> Totaal: {tijdelijkeReisverzekering.totalPrice} euro</p>
                     </div>
-
                     {tijdelijkeReisverzekering.recommendedResult && <p className="recommendedResultBanner">Onze aanbeveling!</p>}
-
                 </div>
 
                 <div className={`${doorlopendeReisverzekering.recommendedResult ? 'recommendedResultBanner result' : 'result'}`}>
@@ -32,12 +30,10 @@ const Result = ({ result }: Result) => {
                         <p className="font-bold"> Totaal: {doorlopendeReisverzekering.totalPrice} euro</p>
                     </div>
                     {doorlopendeReisverzekering.recommendedResult && <p className="recommendedResultBanner">Onze aanbeveling!</p>}
-
                 </div>
             </div>
         </>
     );
-
 };
 
 export default Result;
